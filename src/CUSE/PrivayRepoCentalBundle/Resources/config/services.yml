@@ -1,0 +1,7 @@
+parameters:
+#    cuse_privay_repo_cental.example.class: CUSE\PrivayRepoCentalBundle\Example
+
+services:
+#    cuse_privay_repo_cental.example:
+#        class: %cuse_privay_repo_cental.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
