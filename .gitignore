@@ -1,0 +1,2 @@
+app/cache/ #ignore all files in the app/cache/ dircectory
+app/logs/ #ignore all files in the app/logs directory

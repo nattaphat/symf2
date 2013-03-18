@@ -1,0 +1,5 @@
+_assetic:
+    resource: .
+    type: assetic
+_app:
+    resource: /data/html/www/haii/symf_git/2.2.0/app/config/routing_dev.yml
