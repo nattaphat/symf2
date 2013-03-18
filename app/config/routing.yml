@@ -1,0 +1,4 @@
+cuse_privay_repo_cental:
+    resource: "@CUSEPrivayRepoCentalBundle/Resources/config/routing.yml"
+    prefix:   /
+
