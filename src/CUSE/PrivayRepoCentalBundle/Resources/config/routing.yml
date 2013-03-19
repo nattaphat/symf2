@@ -2,6 +2,12 @@ hello:
     pattern:  /hello/{name}
     defaults: { _controller: CUSEPrivayRepoCentalBundle:Default:index }
 
-secured:
-    pattern:    /login/
-    defaults: { _controller: CUSEPrivayRepoCentalBundle:Secured:login }
+# secured:
+#     pattern:    /login/
+#     defaults: { _controller: CUSEPrivayRepoCentalBundle:Secured:login }
+
+login:
+    pattern:    /login
+    defaults:   { _controller: CUSEPrivayRepoCentalBundle:Security:login }
+login_check:
+    pattern:    /login_check
