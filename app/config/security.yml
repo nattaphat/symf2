@@ -2,6 +2,7 @@
 # If you don't need to customize your 'login_path' or 'check_path' values 
 # (the values used here are the default values), you can shorten your configuration:
 # form_login: ~
+
 security:
     firewalls:
         secured_area:
@@ -24,11 +25,14 @@ security:
                 users:
                     user:  { password: userpass, roles: [ 'ROLE_USER' ] }
                     admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
-                    
 
-                    jms_security_extra:
-                        secure_all_services: false
-                        expressions: true
+    access_control:
+        - { path: ^/admin, roles: ROLE_USER_IP, ip: 127.0.0.1 }
+        - { path: ^/admin, roles: ROLE_USER_HOST, host: localhost}
+        - { path: ^/admin, roles: ROLE_USER_METHOD, methods: [POST, PUT] }
+        - { path: ^/admin, roles: ROLE_USER }
+        
+        
 
 # security:
 #     encoders:
