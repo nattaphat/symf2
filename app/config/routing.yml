@@ -1,4 +1,4 @@
 cuse_privay_repo_cental:
     resource: "@CUSEPrivayRepoCentalBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   / #prefix:   /admin -> final path of /admin/hello/{name} instead of simply /hello/{name}
 
