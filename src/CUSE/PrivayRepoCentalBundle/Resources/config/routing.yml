@@ -2,6 +2,26 @@ hello:
     pattern:  /hello/{name}
     defaults: { _controller: CUSEPrivayRepoCentalBundle:Default:index }
 
+test_controller:
+    pattern: /hello/conf/{param}/{param2}
+    defaults: { _controller: CUSEPrivayRepoCentalBundle:Default:test,color:green }
+    
+redirect:
+    pattern: /redirect/
+    defaults: { _controller: CUSEPrivayRepoCentalBundle:Default:redirect }
+
+homepage:
+    pattern:  /homepage/
+    defaults: { _controller: CUSEPrivayRepoCentalBundle:Default:index,name:Nattaphat K. }
+
+preforword:
+    pattern: /prefw/
+    defaults: { _controller: CUSEPrivayRepoCentalBundle:Default:preforward, name:Nattaphat K. }
+    
+forward:
+    pattern: /forward/
+    defaults: { _controller: CUSEPrivayRepoCentalBundle:Default:forward }
+
 # secured:
 #     pattern:    /login/
 #     defaults: { _controller: CUSEPrivayRepoCentalBundle:Secured:login }
