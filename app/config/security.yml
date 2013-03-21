@@ -25,17 +25,13 @@ security:
                 users:
                     user:  { password: userpass, roles: [ 'ROLE_USER' ] }
                     admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
-<<<<<<< HEAD
 
     access_control:
         - { path: ^/admin, roles: ROLE_USER_IP, ip: 127.0.0.1 }
         - { path: ^/admin, roles: ROLE_USER_HOST, host: localhost}
         - { path: ^/admin, roles: ROLE_USER_METHOD, methods: [POST, PUT] }
         - { path: ^/admin, roles: ROLE_USER }
-        
-        
-=======
->>>>>>> 47820e1c655adeccd7c3d6df5939f255ee7f4550
+
 
 # security:
 #     encoders:
