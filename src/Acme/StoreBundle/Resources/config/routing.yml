@@ -8,4 +8,8 @@ store_create:
 
 store_show:
     pattern:  /store/show/{id}
-    defaults: { _controller: AcmeStoreBundle:Default:show }    
+    defaults: { _controller: AcmeStoreBundle:Default:show } 
+
+store_show:
+    pattern:  /store/update/{id}
+    defaults: { _controller: AcmeStoreBundle:Default:update }  
