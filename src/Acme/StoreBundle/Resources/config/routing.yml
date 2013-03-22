@@ -1,0 +1,11 @@
+store_homepage:
+    pattern:  /tstore/{name}
+    defaults: { _controller: AcmeStoreBundle:Default:index }
+
+store_create:
+    pattern:  /create
+    defaults: { _controller: AcmeStoreBundle:Default:create }
+
+store_show:
+    pattern:  /store/show/{id}
+    defaults: { _controller: AcmeStoreBundle:Default:show }    
