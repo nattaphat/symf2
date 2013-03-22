@@ -5,6 +5,7 @@ namespace CUSE\PrivayRepoCentalBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /*
 Common services you might need:
@@ -15,6 +16,9 @@ Common services you might need:
 	$router = $this->get('router');
 
 	$mailer = $this->get('mailer');
+
+List all available services:
+	$ php app/console container:debug
 
 */
 class DefaultController extends Controller
@@ -33,6 +37,11 @@ class DefaultController extends Controller
 		// );
 		// // index.html.twig found in Resources/views/Hello/Greetings is rendered.
 		
+		$product = 'a';
+		    if (!$product) {
+		        throw $this->createNotFoundException('The product does not exist');
+		    }
+
         return $this->render('CUSEPrivayRepoCentalBundle:Default:index.html.twig', array('name' => $name));
     }
 
@@ -72,9 +81,76 @@ class DefaultController extends Controller
 	public function forwardAction($name,$color){
 		return new Response('<html><body>Hello <font color="'.$color.'">'.$name.'!</font></body></html>');
 	}
+	
+	public function sess(){
+		
+		$session = $this->getRequest()->getSession();
+
+		// store an attribute for reuse during a later user request
+		$session->set('foo', 'bar');
+
+		// in another controller for another request
+		$foo = $session->get('foo');
+
+		// use a default value if the key doesn't exist
+		$filters = $session->get('filters', array());
+	}
+	
 	public function formAction(Request $request){
 		// $form = $this->createForm();
 		// $form->bind($request);
 		// // ...
 	}
-}
+	
+	public function flashMesgAction()
+	{
+	    // $form = $this->createForm(...);
+	    // 
+	    // $form->bind($this->getRequest());
+	    // if ($form->isValid()) {
+	    //     // do some sort of processing
+	    // 
+	    //     $this->get('session')->getFlashBag()->add('notice', 'Your changes were saved!');
+	    // 
+	    //     return $this->redirect($this->generateUrl(...));
+	    // }
+	    // 
+	    // return $this->render(...);
+	
+		//for twig
+		// {% for flashMessage in app.session.flashbag.get('notice') %}
+		//     <div class="flash-notice">
+		//         {{ flashMessage }}
+		//     </div>
+		// {% endfor %}
+	}
+	
+	public function setJson(){
+		// create a simple Response with a 200 status code (the default)
+		$response = new Response('Hello '.$name, 200);
+
+		// create a JSON-response with a 200 status code
+		$response = new Response(json_encode(array('name' => $name)));
+		$response->headers->set('Content-Type', 'application/json');
+		
+		//or
+		
+		$response = new JsonResponse();
+		$response->setData(array(
+		    'data' => 123
+		));
+	}
+	
+	public function theRequest(Request $request){
+		$request = $this->getRequest();
+
+		$request->isXmlHttpRequest(); // is it an Ajax request?
+
+		$request->getPreferredLanguage(array('en', 'fr'));
+
+		$request->query->get('page'); // get a $_GET parameter
+
+		$request->request->get('page'); // get a $_POST parameter
+	}
+	
+}//end clsss

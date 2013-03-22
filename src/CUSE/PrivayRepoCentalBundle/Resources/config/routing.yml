@@ -11,9 +11,18 @@ redirect:
     defaults: { _controller: CUSEPrivayRepoCentalBundle:Default:redirect }
 
 homepage:
-    pattern:  /homepage/
-    defaults: { _controller: CUSEPrivayRepoCentalBundle:Default:index,name:Nattaphat K. }
+    pattern:  /homepage/{culture}
+    defaults: { _controller: CUSEPrivayRepoCentalBundle:Default:index,name:Nattaphat K.,culture: en }
+    requirements:
+        culture:  en|fr
 
+mobile_homepage:
+    pattern:     /
+    #host:     m.{domain}
+    defaults: { _controller: CUSEPrivayRepoCentalBundle:Main:mobileHomepage }
+    #requirements:
+    #    domain: %domain%
+                
 preforword:
     pattern: /prefw/
     defaults: { _controller: CUSEPrivayRepoCentalBundle:Default:preforward, name:Nattaphat K. }
@@ -22,6 +31,39 @@ forward:
     pattern: /forward/
     defaults: { _controller: CUSEPrivayRepoCentalBundle:Default:forward }
 
+blog:
+    pattern:      /blog/{page}
+    defaults:  { _controller: CUSEPrivayRepoCentalBundle:Blog:index, page: 1 }
+    requirements:
+            page:  \d+ #The \d+ requirement is a regular expression that says that the value of the {page} parameter must be a digit
+    
+blog_show:
+    pattern:      /blog/{slug}
+    defaults:  { _controller: CUSEPrivayRepoCentalBundle:Blog:show }
+    
+contact:
+    pattern:     /contact
+    defaults: { _controller: CUSEPrivayRepoCentalBundle:Main:contact }
+    methods:  [GET] #old version use 'method'
+    requirements:
+        _locale: %acme_demo.locales%
+        
+# some_route:
+#     pattern:     /%acme_demo.route_prefix%/contact
+#     defaults: { _controller: CUSEPrivayRepoCentalBundle:Main:contact }
+
+contact_process:
+    pattern:     /contact
+    defaults: { _controller: CUSEPrivayRepoCentalBundle:Main:contactProcess }
+    methods:  [POST]
+
+article_show:
+  pattern:     /articles/{culture}/{year}/{title}.{_format}
+  defaults: { _controller: CUSEPrivayRepoCentalBundle:Article:show, _format: html }
+  requirements:
+      culture:  en|fr
+      _format:  html|rss
+      year:     \d+
 # secured:
 #     pattern:    /login/
 #     defaults: { _controller: CUSEPrivayRepoCentalBundle:Secured:login }
@@ -29,5 +71,6 @@ forward:
 login:
     pattern:    /login
     defaults:   { _controller: CUSEPrivayRepoCentalBundle:Security:login }
+    
 login_check:
     pattern:    /login_check
