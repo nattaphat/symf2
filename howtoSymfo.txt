@@ -1,0 +1,101 @@
+work with DB
+
+1.Create Bundle
+	$php app/console generate:bundle --namespace=Acme/StoreBundle
+
+2.Configuring the Database
+	# app/config/parameters.yml
+
+3.Create DB if not exist
+	$php app/console doctrine:database:create
+	
+	or Drop/ Create when raise mistake
+	
+	$ php app/console doctrine:database:drop --force
+	$ php app/console doctrine:database:create
+
+4.Creating an Entity Class - Don't for get to create 'Entity' folder
+	// src/Acme/StoreBundle/Entity/Product.php
+	namespace Acme\StoreBundle\Entity;
+
+	class Product
+	{
+    		protected $name;
+			protected $price;
+	    	protected $description;
+	}
+
+5.Generating Getters and Setters
+	--generate by class--
+	$ php app/console doctrine:generate:entities Acme/StoreBundle/Entity/Product
+	
+	--generate by bundle--
+	$ php app/console doctrine:generate:entities AcmeStoreBundle
+	
+	--generate by namespace--
+	$ php app/console doctrine:generate:entities Acme
+
+6.Creating the Database Tables/Schema
+	$ php app/console doctrine:schema:update --force
+	
+7.Persisting Objects to the Database
+	@require:
+	use Acme\StoreBundle\Entity\Product;
+	use Symfony\Component\HttpFoundation\Response;
+	
+	// src/Acme/StoreBundle/Controller/DefaultController.php -- create function
+
+8.Fetching Objects from the Database
+	// src/Acme/StoreBundle/Controller/DefaultController.php -- show function
+	
+9.Updating an Object
+	// src/Acme/StoreBundle/Controller/DefaultController.php -- update function
+
+10.Deleting an Object
+	// src/Acme/StoreBundle/Controller/DefaultController.php -- remove function
+
+11.Querying for Objects with DQL
+	// src/Acme/StoreBundle/Controller/DefaultController.php -- dql function
+	
+12.Using Doctrine's Query Builder
+	// src/Acme/StoreBundle/Controller/DefaultController.php -- queryBuilder function
+	
+13.Entity Relationships/Associations
+	13.1 create category thai product belong to it.
+		$ php app/console doctrine:generate:entity --entity="AcmeStoreBundle:Category" --fields="name:string(255)"
+
+14.Relationship Mapping Metadata
+	// src/Acme/StoreBundle/Entity/Category.php
+	
+	@require:
+		use Doctrine\Common\Collections\ArrayCollection;
+		
+	/**
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
+     */
+    protected $products;
+
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+    }
+
+	//class product must add below for link with category
+	/**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    protected $category;
+
+	//then generate with namespace
+	$ php app/console doctrine:generate:entities Acme
+	
+	//and update schema on database
+	$ php app/console doctrine:schema:update --force
+
+15.Saving Related Entities
+	// src/Acme/StoreBundle/Controller/DefaultController.php -- createProduct function
+
+16.Fetching Related Objects
+	// src/Acme/StoreBundle/Controller/DefaultController.php -- showProCat function 
+	// src/Acme/StoreBundle/Controller/DefaultController.php -- showCatPro function 
