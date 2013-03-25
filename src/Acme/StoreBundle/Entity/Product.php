@@ -1,10 +1,6 @@
 <?php
+// src/Acme/StoreBundle/Entity/Product.php
 namespace Acme\StoreBundle\Entity;
-//php app/console doctrine:mapping:convert yml ./src/Acme/StoreBundle/Resources/config/doctrine/metadata/orm --from-database --force
-//php app/console doctrine:mapping:import AcmeStoreBundle annotation
-//php app/console doctrine:generate:entities Acme
-// update db design
-//php app/console doctrine:schema:update --force
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -20,28 +16,29 @@ class Product
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
+
     /**
      * @ORM\Column(type="string", length=100)
      */
     protected $name;
-       
+
     /**
      * @ORM\Column(type="decimal", scale=2)
      */
     protected $price;
-    
+
     /**
      * @ORM\Column(type="text")
      */
     protected $description;
-    
-    /**
+	
+	
+	/**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     protected $category;
-    
+	
     /**
      * Get id
      *

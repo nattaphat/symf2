@@ -2,7 +2,7 @@ parameters:
     database_driver: pdo_pgsql
     database_host: 127.0.0.1
     database_port: null
-    database_name: intranet2_utf8
+    database_name: cuse
     database_user: moac
     database_password: moac8367
     mailer_transport: smtp

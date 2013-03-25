@@ -1,15 +1,39 @@
-store_homepage:
-    pattern:  /tstore/{name}
+acme_store_homepage:
+    pattern:  /hello/{name}
     defaults: { _controller: AcmeStoreBundle:Default:index }
 
-store_create:
-    pattern:  /create
+acme_store_create:
+    pattern:  /create/
     defaults: { _controller: AcmeStoreBundle:Default:create }
 
-store_show:
-    pattern:  /store/show/{id}
-    defaults: { _controller: AcmeStoreBundle:Default:show } 
+acme_store_show:
+    pattern:  /show/{id}
+    defaults: { _controller: AcmeStoreBundle:Default:show }
 
-store_show:
-    pattern:  /store/update/{id}
-    defaults: { _controller: AcmeStoreBundle:Default:update }  
+acme_store_show:
+    pattern:  /update/{id}
+    defaults: { _controller: AcmeStoreBundle:Default:update }
+    
+acme_store_remove:
+    pattern:  /delete/{id}
+    defaults: { _controller: AcmeStoreBundle:Default:remove }
+
+acme_store_dql:
+    pattern:  /dql/
+    defaults: { _controller: AcmeStoreBundle:Default:queryDql }
+    
+acme_store_queryBuilder:
+    pattern:  /qBuilder/
+    defaults: { _controller: AcmeStoreBundle:Default:queryBuilder } 
+
+acme_store_createProd:
+    pattern:  /createProd/
+    defaults: { _controller: AcmeStoreBundle:Default:createProduct }
+
+acme_store_proCat:
+    pattern:  /showProCat/{id}
+    defaults: { _controller: AcmeStoreBundle:Default:showProCat }
+    
+acme_store_proCat:
+    pattern:  /showCatPro/{id}
+    defaults: { _controller: AcmeStoreBundle:Default:showCatPro }
