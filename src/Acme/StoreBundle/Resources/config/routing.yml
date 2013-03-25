@@ -10,7 +10,7 @@ acme_store_show:
     pattern:  /show/{id}
     defaults: { _controller: AcmeStoreBundle:Default:show }
 
-acme_store_show:
+acme_store_update:
     pattern:  /update/{id}
     defaults: { _controller: AcmeStoreBundle:Default:update }
     
@@ -37,3 +37,7 @@ acme_store_proCat:
 acme_store_proCat:
     pattern:  /showCatPro/{id}
     defaults: { _controller: AcmeStoreBundle:Default:showCatPro }
+    
+acme_store_showbyrepo:
+    pattern:  /showByRepo/{id}
+    defaults: { _controller: AcmeStoreBundle:Default:showByRepository } 

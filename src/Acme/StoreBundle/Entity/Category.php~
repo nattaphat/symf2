@@ -71,4 +71,37 @@ class Category
     {
         return $this->name;
     }
+
+    /**
+     * Add products
+     *
+     * @param \Acme\StoreBundle\Entity\Product $products
+     * @return Category
+     */
+    public function addProduct(\Acme\StoreBundle\Entity\Product $products)
+    {
+        $this->products[] = $products;
+    
+        return $this;
+    }
+
+    /**
+     * Remove products
+     *
+     * @param \Acme\StoreBundle\Entity\Product $products
+     */
+    public function removeProduct(\Acme\StoreBundle\Entity\Product $products)
+    {
+        $this->products->removeElement($products);
+    }
+
+    /**
+     * Get products
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
 }

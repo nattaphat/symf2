@@ -1,4 +1,4 @@
-work with DB
+-------work with DB-------
 
 1.Create Bundle
 	$php app/console generate:bundle --namespace=Acme/StoreBundle
@@ -99,3 +99,29 @@ work with DB
 16.Fetching Related Objects
 	// src/Acme/StoreBundle/Controller/DefaultController.php -- showProCat function 
 	// src/Acme/StoreBundle/Controller/DefaultController.php -- showCatPro function 
+
+17.Joining to Related Records -- by create repository
+	// src/Acme/StoreBundle/Entity/ProductRepository.php
+ 
+18.Lifecycle Callbacks
+	Sometimes, you need to perform an action right before or after an entity is inserted, updated, 
+	or deleted. These types of actions are known as "lifecycle" 
+
+	For example, suppose you want to set a created date column to the current date, 
+	only when the entity is first persisted (i.e. inserted)
+	// src/Acme/StoreBundle/Entity/Product.php
+
+	Now, right before the entity is first persisted, Doctrine will automatically 
+	call this method and the created field will be set to the current date.
+		preRemove
+		postRemove
+		prePersist
+		postPersist
+		preUpdate
+		postUpdate
+		postLoad
+		loadClassMetadata
+
+19.Doctrine Extensions: Timestampable, Sluggable, etc
+	https://github.com/l3pp4rd/DoctrineExtensions/blob/master/doc/symfony2.md
+	

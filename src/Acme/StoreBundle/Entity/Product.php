@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="product")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Product
 {
@@ -32,7 +33,11 @@ class Product
      */
     protected $description;
 	
-	
+    /**
+     * @ORM\Column(type="date",nullable=true)
+     */
+    protected $created;
+    
 	/**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
@@ -139,5 +144,36 @@ class Product
     public function getCategory()
     {
         return $this->category;
+    }
+    
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedValue()
+    {
+        $this->created = new \DateTime();
+    }
+
+    /**
+     * Set created
+     *
+     * @param string $created
+     * @return Product
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return string 
+     */
+    public function getCreated()
+    {
+        return $this->created;
     }
 }

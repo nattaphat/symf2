@@ -229,4 +229,19 @@ class DefaultController extends Controller
         );
 	}
 	
+	//call that repository 
+	public function showByRepositoryAction($id)
+	{
+	    $product = $this->getDoctrine()
+	    ->getRepository('AcmeStoreBundle:Product')
+	    ->findByAllOrderedByName();
+	
+	    $category = $product->getCategory();
+	
+	    // ...
+	    return new Response(
+	            'Created product id: '.$product->getId().' and category Name: '.$categoryName
+	    );
+	}
+	
 }// end class
