@@ -1,0 +1,71 @@
+--------------Validation--------------
+1.The Basics of Validation
+	// src/Acme/BlogBundle/Entity/Author.php
+
+2.Using the validator Service
+	// src/Acme/BlogBundle/Controller/Defaultcontroller.php
+
+3.Validation and Forms
+	# src/Acme/BlogBundle/Resources/config/validation.yml
+
+	Configuration
+	Properties
+	Getters
+	Validation Groups
+
+--------------Forms--------------
+1.Creating a Simple Form
+	// src/Acme/TaskBundle/Entity/Task.php
+
+2.Building the Form
+	// src/Acme/TaskBundle/Controller/DefaultController.php
+
+3.Rendering the Form
+	{# src/Acme/TaskBundle/Resources/views/Default/new.html.twig #}
+
+4.Handling Form Submissions
+
+5.Form Validation
+	You can access the current data of your form via form.vars.value:
+	twit:
+		{{ form.vars.value.task }}
+
+		{{ form_widget(form.task, { 'attr': {'class': 'task_field'} }) }}
+
+--------------Cache--------------
+1.Symfony2 Reverse Proxy
+	// web/app.php
+	// app/AppCache.php
+	Here is a list of the main options:
+	default_ttl: The number of seconds that a cache entry should be considered fresh when no 
+				explicit freshness information is provided in a response. Explicit Cache-Control 
+				or Expires headers override this value (default: 0);
+	private_headers: Set of request headers that trigger "private" Cache-Control behavior on 
+				responses that don't explicitly state whether the response is public or 
+				private via a Cache-Control directive. (default: Authorization and Cookie);
+	allow_reload: Specifies whether the client can force a cache reload by including a 
+				Cache-Control "no-cache" directive in the request. Set it to true for 
+				compliance with RFC 2616 (default: false);
+	allow_revalidate: Specifies whether the client can force a cache revalidate by including 
+				a Cache-Control "max-age=0" directive in the request. Set it to true 
+				for compliance with RFC 2616 (default: false);
+	stale_while_revalidate: Specifies the default number of seconds (the granularity is the second
+				as the Response TTL precision is a second) during which the cache can immediately 
+				return a stale response while it revalidates it in the background (default: 2); 
+				this setting is overridden by the stale-while-revalidate HTTP Cache-Control 
+				extension (see RFC 5861);
+	stale_if_error: Specifies the default number of seconds (the granularity is the second) 
+				during which the cache can serve a stale response when an error is encountered 
+				(default: 60). This setting is overridden by the stale-if-error 
+				HTTP Cache-Control extension (see RFC 5861).
+
+2.Introduction to HTTP Caching
+	HTTP specifies four response cache headers that are looked at here:
+		Cache-Control
+		Expires
+		ETag
+		Last-Modified
+	The most important and versatile header is the Cache-Control header, 
+	which is actually a collection of various cache information.
+
+3.The Cache-Control Header

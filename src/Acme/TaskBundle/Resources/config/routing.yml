@@ -1,0 +1,19 @@
+acme_task_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: AcmeTaskBundle:Default:index }
+
+acme_task_showForm:
+    pattern:  /task/form/
+    defaults: { _controller: AcmeTaskBundle:Default:new }
+
+task_new:
+    pattern:  /ello/{name}
+    defaults: { _controller: AcmeTaskBundle:Default:index,name:Nattaphat }
+    
+acme_task_showForm2:
+    pattern:  /task/form2/
+    defaults: { _controller: AcmeTaskBundle:Default:new2 }
+
+acme_task_showForm3:
+    pattern:  /task/form3/
+    defaults: { _controller: AcmeTaskBundle:Default:newTaskFromCls }        

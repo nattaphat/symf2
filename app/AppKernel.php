@@ -21,6 +21,8 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new CUSE\PrivayRepoCentalBundle\CUSEPrivayRepoCentalBundle(),
             new Acme\StoreBundle\AcmeStoreBundle(),
+            new Acme\BlogBundle\AcmeBlogBundle(),
+            new Acme\TaskBundle\AcmeTaskBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
